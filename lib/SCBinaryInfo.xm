@@ -68,6 +68,11 @@
 #define CPU_SUBTYPE_ARM64_V8 1
 #endif
 
+// ARM64E subtypes.
+#ifndef CPU_SUBTYPE_ARM64E
+#define CPU_SUBTYPE_ARM64E 2
+#endif
+
 // NOTE: CoreSymbolication provides a similar function, but it is not available
 //       in earlier versions of iOS.
 // TODO: Determine from which version the function is available.
@@ -77,6 +82,9 @@ static CSArchitecture architectureForName(const char *name) {
     if (strcmp(name, "arm64") == 0) {
         arch.cpu_type = CPU_TYPE_ARM64;
         arch.cpu_subtype = CPU_SUBTYPE_ARM64_ALL;
+    } else if (strcmp(name, "arm64e") == 0) {
+        arch.cpu_type = CPU_TYPE_ARM64;
+        arch.cpu_subtype = CPU_SUBTYPE_ARM64E;
     } else if (
             (strcmp(name, "armv7s") == 0) ||
             (strcmp(name, "armv7k") == 0) ||
